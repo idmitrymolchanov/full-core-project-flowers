@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-flower-table
+      author: dmolchanov
+      comment: first table for flower's taxonomy
+      labels: 02.02.2024
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            - tableExists:
+                tableName: FLOWER
+      changes:
+        - createTable:
+            tableName: FLOWER
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: flower_pkey
+                    nullable: false
+              - column:
+                  name: create_date
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_update_date
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: short_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: full_name
+                  type: varchar(255)
+              - column:
+                  name: color
+                  type: varchar(255)
+              - column:
+                  name: type
+                  type: varchar(255)
+              - column:
+                  name: description
+                  type: varchar(255)

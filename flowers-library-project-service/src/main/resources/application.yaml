@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: flowers-project
+
+  data:
+    redis:
+      repositories:
+        enabled: false
+  cache:
+    type: none
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/testdb
+    username: admin
+    password: root
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: false
+        show_sql: false
+    database: POSTGRESQL
+
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+
+server:
+  port: 8081
+  error:
+    include-message: always
